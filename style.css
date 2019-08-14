@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.background {
+  background-color: hsla(209, 23%, 22%, .65);
+  z-index: 99999;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50vw;
+  height: 100vh;
+  animation: discoverLeft 4s linear;
+  animation-fill-mode: forwards;
+  animation-delay: 0.2s;
+  animation-iteration-count: 1;
+}
+
+.background2 {
+  background-color: hsla(209, 23%, 22%, .65);
+  z-index: 99999;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50vw;
+  height: 100vh;
+  animation: discoverRight 4s linear;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-delay: 0.2s;
+}
+
+
+
+body {
+  background-color:black;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.neon {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 180px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  position: relative;
+  background-color: black;
+  color: transparent;
+}
+
+.neon:focus {
+  outline: none;
+  border: 2px dotted white;
+}
+
+.neon::before, .neon::after {
+  content: attr(data-text);
+  color: white;
+  -webkit-filter: blur(0.02em);
+  filter: blur(0.02em);
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+.neon::after {
+  mix-blend-mode: difference;
+}
+
+.text-effect {
+  overflow: hidden;
+  position: relative;
+  -webkit-filter: contrast(150%) brightness(300%);
+  filter: contrast(130%) brightness(250%);
+  animation: text 3s linear;
+  animation-delay: 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+.gradient,
+.spotlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.gradient {
+  background: linear-gradient(15deg, red, blue);
+  mix-blend-mode: multiply;
+}
+
+.spotlight {
+  -webkit-animation: light 5s infinite linear;
+  animation: light 5s infinite linear;
+  background: radial-gradient(circle, white, transparent 25%) 0 0/25% 25%, radial-gradient(circle, white, black 25%) 50% 50%/12.5% 12.5%;
+  top: -100%;
+  left: -100%;
+  mix-blend-mode: color-dodge;
+}
+
+@keyframes light {
+  100% {
+    -webkit-transform: translate3d(50%, 50%, 0);
+    transform: translate3d(50%, 50%, 0);
+  }
+}
+
+@keyframes discoverLeft {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  65% {
+    opacity: 0.3
+  }
+
+  100% {
+    transform: translateX(-1500px) skew(50deg);
+  }
+}
+
+@keyframes discoverRight {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  65% {
+    opacity: 0.3
+  }
+
+  100% {
+    transform: translateX(1500px) skew(-50deg);
+  }
+}
+
+@keyframes text {
+  0% {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
